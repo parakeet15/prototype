@@ -1,7 +1,7 @@
 'use strict';
 
-import * as handleFiles from './modules/handle-files.js';
-import { removeAllChildren } from './modules/utils.js';
+// import * as handleFiles from './modules/handle-files.js';
+// import { removeAllChildren } from './modules/utils.js';
 
 // ツールバー
 const createButton = document.getElementById('create-button');
