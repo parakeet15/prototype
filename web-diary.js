@@ -189,7 +189,6 @@ function load(listItem) {
             console.warn(`“${key}” のデータを取得できませんでした`, error);
         }
         saveButton.onclick = () => save(key);
-        closeButton.onclick = () => listStyle(listItem);
         deleteButton.onclick = () => remove(key);
     } else {
         remove(key);
