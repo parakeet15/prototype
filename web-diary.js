@@ -63,7 +63,7 @@ function handleFile(event) {
             const audio = handleFiles.audioFile(file);
             contentArea.appendChild(audio);
         default:
-            console.warn(file.name, file.type);
+            alert('未対応の形式です');
             break;
     }
     fileElement.value = null;
