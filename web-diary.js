@@ -62,7 +62,7 @@ function handleFile(event) {
         case 'audio/mp3':
             const audio = handleFiles.audio(file);
             contentArea.appendChild(audio);
-            console.log('実行');
+            break;
         default:
             alert('未対応の形式です');
             break;
