@@ -57,7 +57,7 @@ function handleFile(event) {
             const audio = handleFiles.audioFile(file);
             contentArea.appendChild(audio);
         default:
-            console.warn(file.name);
+            console.warn(file.name, file.type);
             break;
     }
     fileElement.value = null;
