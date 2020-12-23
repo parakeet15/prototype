@@ -6,15 +6,15 @@
  * @return {HTMLElement} 段落要素
  */
 function textFile(file) {
+  const paragraph = document.createElement('p');
   const reader = new FileReader();
   reader.readAsText(file);
-  return reader.onload = event => {
+  reader.onload = event => {
     const text = event.target.result;
-    const paragraph = document.createElement('p');
     paragraph.className = 'text-file';
     paragraph.textContent = text;
-    return paragraph;
   }
+  return paragraph;
 }
 
 /**
@@ -23,15 +23,15 @@ function textFile(file) {
  * @return {HTMLElement} 画像埋め込み要素
  */
 function imageFile(file) {
+  const image = document.createElement('img');
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
-    const image = document.createElement('img');
     image.className = 'image-file';
     image.src = url;
-    return image;
   }
+  return image;
 }
 
 /**
@@ -40,15 +40,15 @@ function imageFile(file) {
  * @return {HTMLElement} 動画埋め込み要素
  */
 function videoFile(file) {
+  const video = document.createElement('video');
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
-    const video = document.createElement('video');
     video.className = 'video-file';
     video.src = url;
-    return video;
   }
+  return video;
 }
 
 /**
@@ -57,15 +57,15 @@ function videoFile(file) {
  * @return {HTMLElement} 埋め込み音声要素
  */
 function audioFile(file) {
+  const audio = document.createElement('audio');
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
-    const audio = document.createElement('audio');
     audio.className = 'audio-file';
     audio.src = url;
-    return audio;
   }
+  return audio;
 }
 
 export {
