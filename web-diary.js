@@ -1,6 +1,7 @@
 'use strict';
 
 // import * as handleFiles from './modules/handle-files.js';
+import { removeAllChildren } from './modules/utils.js';
 
 // ツールバー
 const createButton = document.getElementById('create-button');
@@ -53,16 +54,6 @@ function date() {
     const second = format(now.getSeconds());
     const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return `${year}/${month}/${date} ${hour}:${min}:${second} ${dayOfWeek[now.getDay()]}`;
-}
-
-/**
- * 指定した要素の子要素を全削除する
- * @param {HTMLElement} element 
- */
-function removeAllChildren(element) {
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
 }
 
 /**
