@@ -13,7 +13,8 @@ function textFile(file) {
     const paragraph = document.createElement('p');
     paragraph.className = 'text-file';
     paragraph.textContent = text;
-    return paragraph;
+    // return paragraph;
+    return 'Test';
   }
 }
 
