@@ -75,7 +75,7 @@ function audioFile(file) {
   const audio = document.createElement('audio');
   audio.className = 'audio-file';
   audio.dataset.file = file.name;
-  video.setAttribute('contenteditable', 'false');
+  audio.setAttribute('contenteditable', 'false');
   audio.setAttribute('controls', '');
 
   const reader = new FileReader();
