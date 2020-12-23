@@ -7,11 +7,11 @@
  */
 function textFile(file) {
   const paragraph = document.createElement('p');
+  paragraph.className = 'text-file';
   const reader = new FileReader();
   reader.readAsText(file);
   reader.onload = event => {
     const text = event.target.result;
-    paragraph.className = 'text-file';
     paragraph.textContent = text;
   }
   return paragraph;
@@ -24,11 +24,11 @@ function textFile(file) {
  */
 function imageFile(file) {
   const image = document.createElement('img');
+  image.className = 'image-file';
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
-    image.className = 'image-file';
     image.src = url;
   }
   return image;
@@ -41,11 +41,11 @@ function imageFile(file) {
  */
 function videoFile(file) {
   const video = document.createElement('video');
+  video.className = 'video-file';
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
-    video.className = 'video-file';
     video.src = url;
   }
   return video;
@@ -58,11 +58,11 @@ function videoFile(file) {
  */
 function audioFile(file) {
   const audio = document.createElement('audio');
+  audio.className = 'audio-file';
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
-    audio.className = 'audio-file';
     audio.src = url;
   }
   return audio;

@@ -42,26 +42,26 @@ function handleFile(event) {
     }
     switch (file.type) {
         case 'text/plain':
-            console.log(handleFiles.text(file));
-            // contentArea.appendChild(handleFiles.text(file));
+            const text = handleFiles.text(file);
+            contentArea.appendChild(text);
             break;
         case 'video/quicktime':
         case 'video/x-msvideo':
         case 'video/mp4':
-            console.log(handleFiles.video(file));
-            // contentArea.appendChild(handleFiles.video(file));
+            const video = handleFiles.video(file);
+            contentArea.appendChild(video);
             break;
         case 'image/jpeg':
         case 'image/png':
         case 'image/gif':
-            console.log(handleFiles.image(file));
-            // contentArea.appendChild(handleFiles.image(file));
+            const image = handleFiles.image(file);
+            contentArea.appendChild(image);
             break;
         case 'audio/x-aiff':
         case 'audio/mpeg':
         case 'audio/wav':
-            console.log(handleFiles.audio(file));
-            // contentArea.appendChild(handleFiles.audio(file));
+            const audio = handleFiles.audio(file);
+            contentArea.appendChild(audio);
         default:
             alert('未対応の形式です');
             break;
