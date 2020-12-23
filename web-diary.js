@@ -42,26 +42,22 @@ function handleFile(event) {
     }
     switch (file.type) {
         case 'text/plain':
-            const text = handleFiles.textFile(file);
-            contentArea.appendChild(text);
+            contentArea.appendChild(handleFiles.text(file));
             break;
         case 'video/quicktime':
         case 'video/x-msvideo':
         case 'video/mp4':
-            const video = handleFiles.videoFile(file);
-            contentArea.appendChild(video);
+            contentArea.appendChild(handleFiles.video(file));
             break;
         case 'image/jpeg':
         case 'image/png':
         case 'image/gif':
-            const image = handleFiles.imageFile(file);
-            contentArea.appendChild(image);
+            contentArea.appendChild(handleFiles.image(file));
             break;
         case 'audio/x-aiff':
         case 'audio/mpeg':
         case 'audio/wav':
-            const audio = handleFiles.audioFile(file);
-            contentArea.appendChild(audio);
+            contentArea.appendChild(handleFiles.audio(file));
         default:
             alert('未対応の形式です');
             break;

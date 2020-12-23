@@ -30,7 +30,6 @@ function imageFile(file) {
     const image = document.createElement('img');
     image.className = 'image-file';
     image.src = url;
-    console.log(image);
     return image;
   }
 }
@@ -69,4 +68,9 @@ function audioFile(file) {
   }
 }
 
-export { textFile, imageFile, videoFile, audioFile };
+export {
+  textFile as text,
+  imageFile as image,
+  videoFile as video,
+  audioFile as audio
+};
