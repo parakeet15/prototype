@@ -41,19 +41,25 @@ function handleFile(event) {
         return;
     }
     switch (file.type) {
-        case 'text/*':
+        case 'text/plain':
             const text = handleFiles.textFile(file);
             contentArea.appendChild(text);
             break;
-        case 'video/*':
+        case 'video/quicktime':
+        case 'video/x-msvideo':
+        case 'video/mp4':
             const video = handleFiles.videoFile(file);
             contentArea.appendChild(video);
             break;
-        case 'image/*':
+        case 'image/jpeg':
+        case 'image/png':
+        case 'image/gif':
             const image = handleFiles.imageFile(file);
             contentArea.appendChild(image);
             break;
-        case 'audio/*':
+        case 'audio/x-aiff':
+        case 'audio/mpeg':
+        case 'audio/wav':
             const audio = handleFiles.audioFile(file);
             contentArea.appendChild(audio);
         default:
