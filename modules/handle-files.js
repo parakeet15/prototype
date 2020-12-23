@@ -30,6 +30,7 @@ function imageFile(file) {
     const image = document.createElement('img');
     image.className = 'image-file';
     image.src = url;
+    console.log(image);
     return image;
   }
 }
