@@ -1,6 +1,6 @@
 'use strict';
 
-import * as handleFiles from './modules/handle-files.js';
+// import * as handleFiles from './modules/handle-files.js';
 
 // ツールバー
 const createButton = document.getElementById('create-button');
