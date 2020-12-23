@@ -75,6 +75,8 @@ function audioFile(file) {
   const audio = document.createElement('audio');
   audio.className = 'audio-file';
   audio.dataset.file = file.name;
+  audio.setAttribute('controls', '');
+
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
