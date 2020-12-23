@@ -57,9 +57,9 @@ function handleFile(event) {
             const image = handleFiles.image(file);
             contentArea.appendChild(image);
             break;
-        case 'audio/x-aiff':
         case 'audio/mpeg':
         case 'audio/wav':
+        case 'audio/mp3':
             const audio = handleFiles.audio(file);
             contentArea.appendChild(audio);
         default:
