@@ -56,6 +56,7 @@ function handleFile(event) {
         case 'image/gif':
             const image = handleFiles.imageFile(file);
             contentArea.appendChild(image);
+            console.log(image);
             break;
         case 'audio/x-aiff':
         case 'audio/mpeg':
