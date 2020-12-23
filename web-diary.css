@@ -226,3 +226,7 @@ body {
     word-wrap: break-word;
     text-overflow: ellipsis;
 }
+
+.audio-file {
+    display: block;
+}
