@@ -6,18 +6,18 @@
  * @return {HTMLElement} 段落要素
  */
 function textFile(file) {
-  const paragraph = document.createElement('p');
-  paragraph.className = 'text-file';
-  paragraph.dataset.file = file.name;
+  const divided = document.createElement('div');
+  divided.className = 'text-file';
+  divided.dataset.file = file.name;
 
   const reader = new FileReader();
   reader.readAsText(file);
   reader.onload = event => {
     const text = event.target.result;
-    paragraph.textContent = text;
+    divided.textContent = text;
   }
 
-  return paragraph;
+  return divided;
 }
 
 /**
