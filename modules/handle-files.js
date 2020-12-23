@@ -14,8 +14,7 @@ function textFile(file) {
   reader.readAsText(file);
   reader.onload = event => {
     const text = event.target.result;
-    text.replace(/\n/g, '<br>');
-    divided.innerHTML = text;
+    divided.textContent = text;
   }
 
   return divided;
