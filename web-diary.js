@@ -1,15 +1,12 @@
 'use strict';
 
-// import * as handleFiles from './modules/handle-files.js';
+import * as handleFiles from './modules/handle-files.js';
 import { removeAllChildren } from './modules/utils.js';
 
 // ツールバー
 const createButton = document.getElementById('create-button');
 const saveButton = document.getElementById('save-button');
 const deleteButton = document.getElementById('delete-button');
-const searchButton = document.getElementById('search-button');
-const closeButton = document.getElementById('close-button');
-const helpButton = document.getElementById('help-button');
 const fileElement = document.getElementById('add-file-input');
 
 // メインコンテンツ
@@ -17,44 +14,6 @@ const titleInput = document.getElementById('title-input');
 const contentArea = document.getElementById('content-area');
 const createdDate = document.getElementById('created-date');
 const saveList = document.getElementById('save-list');
-
-// ダイアログ
-const searchDialog = document.getElementById('search-dialog');
-const searchDialogCloseButton = document.getElementById('search-dialog-close-button');
-const searchInput = document.getElementById('search-input');
-const helpDialog = document.getElementById('help-dialog');
-const helpDialogCloseButton = document.getElementById('help-dialog-close-button');
-
-// ドラッグ禁止
-document.ondragstart = () => false;
-
-/**
- * 日付の桁を揃える
- * @param {Number} number 日付の数値
- * @return {String} 整形された日付の文字列
- */
-function format(number) {
-    if (number < 10) {
-        number = `0${number}`;
-    }
-    return number;
-}
-
-/**
- * 日付の文字列を返す
- * @return {String} 日付の文字列
- */
-function date() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = format(now.getMonth() + 1);
-    const date = format(now.getDate());
-    const hour = format(now.getHours());
-    const min = format(now.getMinutes());
-    const second = format(now.getSeconds());
-    const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return `${year}/${month}/${date} ${hour}:${min}:${second} ${dayOfWeek[now.getDay()]}`;
-}
 
 /**
  * リストアイテムのスタイルを設定する
@@ -66,53 +25,6 @@ function listStyle(listItem) {
         savedItem.style.backgroundColor = '#ffffff';
         listItem.style.backgroundColor = '#eeeeee';
     }
-}
-
-// リスト内を検索する
-searchButton.onclick = () => {
-    closeButton.onclick();
-    if (!searchDialog.hasAttribute('open')) {
-        try {
-            searchDialog.showModal();
-        } catch (e) {
-            // TODO Firefox でも動作するように修正
-            alert('この機能は現在 Google Chrome でのみ利用できます');
-        }
-    }
-    searchDialogCloseButton.onclick = () => {
-        searchInput.value = null;
-        searchDialog.close();
-    }
-    searchDialog.addEventListener('cancel', () => {
-        searchInput.value = null;
-    }, false);
-    searchInput.addEventListener('change', () => {
-        searchDialog.close(searchInput.value);
-        searchInput.value = null;
-        let keyword = new RegExp(searchDialog.returnValue, 'i');
-        for (let target of saveList.getElementsByClassName('saved-item')) {
-            if (!keyword.test(target.textContent)) {
-                target.style.display = 'none';
-            }
-        }
-    }, false);
-}
-
-// ヘルプを表示
-helpButton.onclick = () => {
-    if (!helpDialog.hasAttribute('open')) {
-        try {
-            helpDialog.showModal();
-        } catch (e) {
-            // TODO Firefox でも動作するように修正
-            alert('この機能は現在 Google Chrome でのみ利用できます');
-        }
-    }
-}
-
-// ヘルプを非表示
-helpDialogCloseButton.onclick = () => {
-    helpDialog.close();
 }
 
 fileElement.addEventListener('change', handleFile, false);
@@ -162,7 +74,7 @@ function save(key) {
     const diary = {
         title: titleInput.value,
         content: contentArea.innerHTML,
-        createdAt: date()
+        createdAt: new Date(parseInt(key.split('-')[1])).toLocaleString()
     }
     try {
         localStorage.setItem(key, JSON.stringify(diary));
