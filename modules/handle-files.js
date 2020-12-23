@@ -8,12 +8,15 @@
 function textFile(file) {
   const paragraph = document.createElement('p');
   paragraph.className = 'text-file';
+  paragraph.dataset.file = file.name;
+
   const reader = new FileReader();
   reader.readAsText(file);
   reader.onload = event => {
     const text = event.target.result;
     paragraph.textContent = text;
   }
+
   return paragraph;
 }
 
@@ -25,12 +28,15 @@ function textFile(file) {
 function imageFile(file) {
   const image = document.createElement('img');
   image.className = 'image-file';
+  image.dataset.file = file.name;
+
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
     image.src = url;
   }
+
   return image;
 }
 
@@ -42,12 +48,21 @@ function imageFile(file) {
 function videoFile(file) {
   const video = document.createElement('video');
   video.className = 'video-file';
+  video.dataset.file = file.name;
+  video.setAttribute('contenteditable', 'false');
+  video.setAttribute('controlslist', 'nodownload');
+  video.setAttribute('disablepictureinpicture', '');
+  video.setAttribute('controls', '');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('loop', '');
+
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {
     const url = event.target.result;
     video.src = url;
   }
+
   return video;
 }
 
@@ -59,6 +74,7 @@ function videoFile(file) {
 function audioFile(file) {
   const audio = document.createElement('audio');
   audio.className = 'audio-file';
+  audio.dataset.file = file.name;
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = event => {

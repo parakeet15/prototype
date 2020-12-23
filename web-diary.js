@@ -67,6 +67,7 @@ function handleFile(event) {
             break;
     }
     fileElement.value = null;
+    console.info(file.name);
 }
 
 /**
