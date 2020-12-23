@@ -8,13 +8,12 @@
 function textFile(file) {
   const reader = new FileReader();
   reader.readAsText(file);
-  reader.onload = event => {
+  return reader.onload = event => {
     const text = event.target.result;
     const paragraph = document.createElement('p');
     paragraph.className = 'text-file';
     paragraph.textContent = text;
-    // return paragraph;
-    return 'Test';
+    return paragraph;
   }
 }
 
