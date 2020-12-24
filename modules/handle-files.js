@@ -9,6 +9,7 @@ function handleTextFile(file) {
   const divided = document.createElement('div');
   divided.className = 'text-file';
   divided.dataset.fileName = file.name;
+  divided.dataset.fileType = file.type;
   divided.dataset.fileSize = file.size;
 
   const reader = new FileReader();
@@ -30,6 +31,7 @@ function handleImageFile(file) {
   const image = document.createElement('img');
   image.className = 'image-file';
   image.dataset.fileName = file.name;
+  image.dataset.fileType = file.type;
   image.dataset.fileSize = file.size;
 
   const reader = new FileReader();
@@ -51,6 +53,7 @@ function handleVideoFile(file) {
   const video = document.createElement('video');
   video.className = 'video-file';
   video.dataset.fileName = file.name;
+  video.dataset.fileType = file.type;
   video.dataset.fileSize = file.size;
   video.setAttribute('contenteditable', 'false');
   video.setAttribute('controlslist', 'nodownload');
@@ -78,6 +81,7 @@ function handleAudioFile(file) {
   const audio = document.createElement('audio');
   audio.className = 'audio-file';
   audio.dataset.fileName = file.name;
+  audio.dataset.fileType = file.type;
   audio.dataset.fileSize = file.size;
   audio.setAttribute('contenteditable', 'false');
   audio.setAttribute('controls', '');
