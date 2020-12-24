@@ -1,7 +1,8 @@
 'use strict';
 
+// モジュール
 import * as handleFiles from './modules/handle-files.js';
-import { removeAllChildren } from './modules/utils.js';
+import * as utils from './modules/utils.js';
 
 // ツールバー
 const createButton = document.getElementById('create-button');
@@ -68,7 +69,12 @@ function handleFile(event) {
             break;
     }
     fileElement.value = null;
-    console.info(file.name, file.type);
+    console.info(
+        `[${new Date().toLocaleString()}]`,
+        `File name: ${file.name}`,
+        `File type: ${file.type}`,
+        `File size: ${file.size}`
+    );
 }
 
 /**
@@ -131,7 +137,7 @@ function addToList(key) {
     titleInput.value = null;
     if (saveList.querySelector(`li[data-key="${key}"]`)) {
         const savedItem = saveList.querySelector(`li[data-key="${key}"]`);
-        removeAllChildren(savedItem);
+        utils.removeAllChildren(savedItem);
         savedItem.appendChild(container);
         load(savedItem);
     } else {
@@ -153,8 +159,8 @@ createButton.addEventListener('click', create, false);
  */
 function create() {
     titleInput.value = null;
-    removeAllChildren(contentArea);
-    removeAllChildren(createdDate);
+    utils.removeAllChildren(contentArea);
+    utils.removeAllChildren(createdDate);
     save(`diary-${Date.now()}`);
 }
 

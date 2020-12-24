@@ -5,10 +5,11 @@
  * @param {Object} file File オブジェクト
  * @return {HTMLElement} 段落要素
  */
-function textFile(file) {
+function handleTextFile(file) {
   const divided = document.createElement('div');
   divided.className = 'text-file';
-  divided.dataset.file = file.name;
+  divided.dataset.fileName = file.name;
+  divided.dataset.fileSize = file.size;
 
   const reader = new FileReader();
   reader.readAsText(file);
@@ -25,10 +26,11 @@ function textFile(file) {
  * @param {Object} file File オブジェクト
  * @return {HTMLElement} 画像埋め込み要素
  */
-function imageFile(file) {
+function handleImageFile(file) {
   const image = document.createElement('img');
   image.className = 'image-file';
-  image.dataset.file = file.name;
+  image.dataset.fileName = file.name;
+  image.dataset.fileSize = file.size;
 
   const reader = new FileReader();
   reader.readAsDataURL(file);
@@ -45,10 +47,11 @@ function imageFile(file) {
  * @param {Object} file File オブジェクト
  * @return {HTMLElement} 動画埋め込み要素
  */
-function videoFile(file) {
+function handleVideoFile(file) {
   const video = document.createElement('video');
   video.className = 'video-file';
-  video.dataset.file = file.name;
+  video.dataset.fileName = file.name;
+  video.dataset.fileSize = file.size;
   video.setAttribute('contenteditable', 'false');
   video.setAttribute('controlslist', 'nodownload');
   video.setAttribute('disablepictureinpicture', '');
@@ -71,10 +74,11 @@ function videoFile(file) {
  * @param {Object} file File オブジェクト
  * @return {HTMLElement} 埋め込み音声要素
  */
-function audioFile(file) {
+function handleAudioFile(file) {
   const audio = document.createElement('audio');
   audio.className = 'audio-file';
-  audio.dataset.file = file.name;
+  audio.dataset.fileName = file.name;
+  audio.dataset.fileSize = file.size;
   audio.setAttribute('contenteditable', 'false');
   audio.setAttribute('controls', '');
 
@@ -84,12 +88,13 @@ function audioFile(file) {
     const url = event.target.result;
     audio.src = url;
   }
+
   return audio;
 }
 
 export {
-  textFile as text,
-  imageFile as image,
-  videoFile as video,
-  audioFile as audio
+  handleTextFile as text,
+  handleImageFile as image,
+  handleVideoFile as video,
+  handleAudioFile as audio
 };
